@@ -33,6 +33,9 @@ module.exports = {
             test: /\.less$/,
             include: SRC_PATH,
             loader: 'style!css!postcss!less'
+        }, {
+            test: /\.(png|jpg)$/,
+            loader: 'url?limit=40000'
         }]
     },
     postcss: [autoprefixer],
