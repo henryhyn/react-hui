@@ -48,6 +48,21 @@ module.exports = {
         configFile: './.eslintrc.json'
     },
     postcss: [autoprefixer],
+    // 启用 source-map
+    devtool: 'source-map',
+    // 配置 webpack-dev-server 代理
+    devServer: {
+        historyApiFallback: true,
+        hot: true,
+        inline: true,
+        progress: true,
+        proxy: {
+            '/api/*': {
+                target: 'http://localhost:8080',
+                secure: false
+            }
+        }
+    },
     plugins: [
         new ExtractTextPlugin('[name].css'),
         // 添加我们的插件会自动生成一个 html 文件
