@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Mask } from './components';
 
 ReactDOM.render(
-    <p>Hello world!</p>
+    <Mask/>
     , document.getElementById('container'));

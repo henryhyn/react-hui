@@ -1,4 +1,5 @@
 var path = require('path');
+var autoprefixer = require('autoprefixer');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 // 定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
@@ -25,8 +26,16 @@ module.exports = {
             query: {
                 presets: ['es2015', 'react']
             }
+        }, {
+            test: /\.css$/,
+            loader: 'style!css!postcss'
+        }, {
+            test: /\.less$/,
+            include: SRC_PATH,
+            loader: 'style!css!postcss!less'
         }]
     },
+    postcss: [autoprefixer],
     plugins: [
         // 添加我们的插件会自动生成一个 html 文件
         new HtmlwebpackPlugin({
