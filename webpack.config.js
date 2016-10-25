@@ -19,6 +19,11 @@ module.exports = {
     },
     // 模块. 要用什么不同的模块来处理各种类型的文件
     module: {
+        preLoaders: [{
+            test: /\.js$/,
+            include: SRC_PATH,
+            loader: 'eslint-loader'
+        }],
         loaders: [{
             test: /\.js$/,
             include: SRC_PATH,
@@ -37,6 +42,9 @@ module.exports = {
             test: /\.(png|jpg)$/,
             loader: 'url?limit=40000'
         }]
+    },
+    eslint: {
+        configFile: './.eslintrc.json'
     },
     postcss: [autoprefixer],
     plugins: [
