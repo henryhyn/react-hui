@@ -16,6 +16,17 @@ module.exports = {
         libraryTarget: 'umd',
         filename: '[name].js'
     },
+    // 模块. 要用什么不同的模块来处理各种类型的文件
+    module: {
+        loaders: [{
+            test: /\.js$/,
+            include: SRC_PATH,
+            loader: 'babel',
+            query: {
+                presets: ['es2015']
+            }
+        }]
+    },
     plugins: [
         // 添加我们的插件会自动生成一个 html 文件
         new HtmlwebpackPlugin({
