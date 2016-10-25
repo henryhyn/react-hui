@@ -1,0 +1,24 @@
+{
+  "name": "react-hui",
+  "version": "1.0.0",
+  "description": "基于 React 的 Web 前端组件库",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henryhyn/react-hui.git"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "hui"
+  ],
+  "author": "Henry He <henryhyn@163.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henryhyn/react-hui/issues"
+  },
+  "homepage": "https://github.com/henryhyn/react-hui#readme"
+}
