@@ -23,13 +23,14 @@ module.exports = {
             include: SRC_PATH,
             loader: 'babel',
             query: {
-                presets: ['es2015']
+                presets: ['es2015', 'react']
             }
         }]
     },
     plugins: [
         // 添加我们的插件会自动生成一个 html 文件
         new HtmlwebpackPlugin({
+            template: 'index.html',
             title: 'Hello World app'
         })
     ]
