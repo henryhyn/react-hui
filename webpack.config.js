@@ -1,6 +1,7 @@
 var path = require('path');
 var autoprefixer = require('autoprefixer');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 // 定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
 var SRC_PATH = path.resolve(ROOT_PATH, 'src');
@@ -33,11 +34,11 @@ module.exports = {
             }
         }, {
             test: /\.css$/,
-            loader: 'style!css!postcss'
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader')
         }, {
             test: /\.less$/,
             include: SRC_PATH,
-            loader: 'style!css!postcss!less'
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader!less-loader?sourceMap')
         }, {
             test: /\.(png|jpg)$/,
             loader: 'url?limit=40000'
@@ -48,6 +49,7 @@ module.exports = {
     },
     postcss: [autoprefixer],
     plugins: [
+        new ExtractTextPlugin('[name].css'),
         // 添加我们的插件会自动生成一个 html 文件
         new HtmlwebpackPlugin({
             template: 'index.html',
