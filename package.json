@@ -1,8 +1,11 @@
 {
   "name": "react-hui",
-  "version": "1.0.0",
+  "version": "1.0.16",
   "description": "基于 React 的 Web 前端组件库",
-  "main": "src/index.js",
+  "main": "dist/hui",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prestart": "npm install",
     "start": "webpack-dev-server --hot --inline --port 9999",
