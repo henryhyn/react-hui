@@ -19,17 +19,24 @@ class Mask extends Component {
             'hui-mask-transparent': transparent
         }, className);
 
-        return (
-            <div className={cls}/>
-        );
+
+        if (this.props.visible) {
+            return (
+                <div className={cls}/>
+            );
+        } else {
+            return false;
+        }
     }
 }
 
 Mask.propTypes = {
+    visible: PropTypes.bool,
     transparent: PropTypes.bool
 };
 
 Mask.defaultProps = {
+    visible: false,
     transparent: false
 };
 
