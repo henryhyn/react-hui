@@ -1,6 +1,8 @@
 import './index.less';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { Menu, Row, Col } from 'antd';
+const MenuItem = Menu.Item;
 
 class Header extends Component {
     constructor(props) {
@@ -12,16 +14,24 @@ class Header extends Component {
         return (
             <nav className='navbar'>
                 <div className='wrapper'>
-                    <div className='navbar-header'>
-                        <Link to='/' className='navbar-brand'>HUI</Link>
-                    </div>
-                    <div className='navbar-nav'>
-                        <ul>
-                            <li><Link to='/'>首页</Link></li>
-                            <li><Link to='about'>关于</Link></li>
-                            <li><Link to='contact'>联系</Link></li>
-                        </ul>
-                    </div>
+                    <Row>
+                        <Col span={4}>
+                            <Link to='/' className='navbar-brand'>HUI</Link>
+                        </Col>
+                        <Col span={20}>
+                            <Menu mode='horizontal' className='navbar-nav'>
+                                <MenuItem>
+                                    <Link to='/'>首页</Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to='about'>关于</Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to='contact'>联系</Link>
+                                </MenuItem>
+                            </Menu>
+                        </Col>
+                    </Row>
                 </div>
             </nav>
         );

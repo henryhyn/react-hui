@@ -1,31 +1,24 @@
 @import "../../style/fn";
 
-@navbar-height: 50px;
+@navbar-height: 80px;
 
 nav.navbar {
-  background-color: #ccc;
+  border-bottom: 1px solid #eee;
 
-  .navbar-header {
-    float: left;
-
-    a.navbar-brand {
-      .link-unstyled;
-      margin-right: 5px;
-      line-height: @navbar-height;
-    }
+  .navbar-brand {
+    font-size: 16px;
+    line-height: @navbar-height;
   }
 
   .navbar-nav {
-    float: left;
+    border: 0;
+    float: right;
+    font-size: 14px;
 
-    > ul {
-      .list-inline;
-      margin-left: 0;
-
-      a {
-        .link-unstyled;
-        line-height: @navbar-height;
-      }
+    li {
+      height: @navbar-height;
+      line-height: @navbar-height;
+      border-bottom-width: 3px;
     }
   }
 }
