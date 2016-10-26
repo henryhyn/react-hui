@@ -10,16 +10,16 @@ class Header extends Component {
 
     render() {
         return (
-            <nav className='navbar navbar-inverse navbar-fixed-top'>
+            <nav className='navbar'>
                 <div className='wrapper'>
                     <div className='navbar-header'>
-                        <Link to='/'>项目名称</Link>
+                        <Link to='/' className='navbar-brand'>HUI</Link>
                     </div>
-                    <div id='navbar'>
-                        <ul className='nav navbar-nav'>
+                    <div className='navbar-nav'>
+                        <ul>
                             <li><Link to='/'>首页</Link></li>
-                            <li><Link to='contact'>联系</Link></li>
                             <li><Link to='about'>关于</Link></li>
+                            <li><Link to='contact'>联系</Link></li>
                         </ul>
                     </div>
                 </div>
