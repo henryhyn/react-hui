@@ -1,5 +1,3 @@
-@import "../../style/fn";
-
 @navbar-height: 80px;
 
 nav.navbar {
@@ -19,6 +17,11 @@ nav.navbar {
       height: @navbar-height;
       line-height: @navbar-height;
       border-bottom-width: 3px;
+
+      &.ant-menu-item-selected a {
+        color: #2db7f5;
+        font-weight: bold;
+      }
     }
   }
 }
