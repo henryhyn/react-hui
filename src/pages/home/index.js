@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SearchBox, Hex } from '../../components';
+import { Icon } from 'antd';
 
 class Home extends Component {
     constructor(props) {
@@ -38,6 +39,7 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <Icon type='link'/>
                 <SearchBox onSearch={this.handleSearch.bind(this)}/>
                 {this.renderData(this.state.data)}
             </div>

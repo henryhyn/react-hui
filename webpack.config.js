@@ -30,6 +30,7 @@ module.exports = {
             include: SRC_PATH,
             loader: 'babel',
             query: {
+                plugins: [['import', {libraryName: 'antd', style: 'css'}]],
                 presets: ['es2015', 'react']
             }
         }, {
