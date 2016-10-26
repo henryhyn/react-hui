@@ -68,6 +68,7 @@ module.exports = {
         // 添加我们的插件会自动生成一个 html 文件
         new HtmlwebpackPlugin({
             template: 'index.html',
+            chunks: ['app'],
             title: 'Hello World app'
         })
     ]
