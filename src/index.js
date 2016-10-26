@@ -2,11 +2,11 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, hashHistory} from 'react-router';
+import {Router, browserHistory} from 'react-router';
 import Routes from './Routes';
 
 ReactDOM.render(
-    <Router history={hashHistory}>
+    <Router history={browserHistory}>
         {Routes}
     </Router>
     , document.getElementById('container'));

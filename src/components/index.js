@@ -1,7 +1,6 @@
 // HUI 组件对外输出的总入口
 
 // 加载样式文件
-import 'normalize.css';
 import './index.less';
 
 // 加载 React 组件
