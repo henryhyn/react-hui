@@ -4,7 +4,8 @@
   "description": "基于 React 的 Web 前端组件库",
   "main": "src/components",
   "files": [
-    "src/components"
+    "src/components",
+    "src/style"
   ],
   "scripts": {
     "prestart": "npm install",

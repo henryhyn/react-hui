@@ -18,7 +18,7 @@ class FancyTree extends Component {
     }
 
     loadDataFromServer() {
-        const url = this.props.url + 'tree';
+        const url = this.props.url + 'tree.json';
         fetch(url).then(res => {
             if (res.ok) {
                 res.json().then(data => this.setState({treeData: [data] || []}));
