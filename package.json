@@ -1,6 +1,6 @@
 {
   "name": "react-hui",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "基于 React 的 Web 前端组件库",
   "main": "src/components",
   "files": [
