@@ -1,0 +1,31 @@
+@import "../../style/fn";
+
+@hui-navbar-height: 80px;
+
+nav.hui-navbar {
+  background-color: @foregroundColor;
+  border-bottom: 1px solid #eee;
+
+  .hui-navbar-brand {
+    font-size: 16px;
+    line-height: @hui-navbar-height;
+  }
+
+  ul.hui-navbar-nav {
+    border: 0;
+    float: right;
+    font-size: 14px;
+    background: transparent;
+
+    li {
+      height: @hui-navbar-height;
+      line-height: @hui-navbar-height;
+      border-bottom-width: 3px;
+
+      &.ant-menu-item-selected a {
+        color: #2db7f5;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -9,8 +9,8 @@ class Footer extends Component {
 
     render() {
         return (
-            <footer id='footer'>
-                <div className='wrapper'>Footer</div>
+            <footer className='hui-footer'>
+                <div className='wrapper'>{this.props.children}</div>
             </footer>
         );
     }
