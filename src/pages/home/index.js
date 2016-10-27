@@ -1,6 +1,24 @@
+import './index.less';
 import React, { Component } from 'react';
 import { SearchBox, Hex } from '../../components';
 import { Icon } from 'antd';
+import Banner from './Banner';
+
+function getStyle() {
+    return `
+        #container, #container > .page-wrapper {
+            height: 100%;
+        }
+        nav.hui-navbar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.25);
+            border-bottom: 1px solid transparent;
+        }
+    `;
+}
 
 class Home extends Component {
     constructor(props) {
@@ -38,10 +56,13 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className='home-wrapper'>
+                <Banner/>
+                <Banner/>
                 <Icon type='link'/>
                 <SearchBox onSearch={this.handleSearch.bind(this)}/>
                 {this.renderData(this.state.data)}
+                <style dangerouslySetInnerHTML={{ __html: getStyle() }}/>
             </div>
         );
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DocumentTitle from 'react-document-title';
 
 class About extends Component {
     constructor(props) {
@@ -8,7 +9,11 @@ class About extends Component {
 
     render() {
         return (
-            <div>about</div>
+            <DocumentTitle title='关于我们'>
+                <div className='main-wrapper'>
+                    <div className='wrapper'>about</div>
+                </div>
+            </DocumentTitle>
         );
     }
 }

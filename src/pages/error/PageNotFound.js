@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DocumentTitle from 'react-document-title';
 
 class PageNotFound extends Component {
     constructor(props) {
@@ -8,7 +9,11 @@ class PageNotFound extends Component {
 
     render() {
         return (
-            <div>页面没有找到, 可能还在开发中...</div>
+            <DocumentTitle title='页面没有找到'>
+                <div className='main-wrapper'>
+                    <div className='wrapper'>页面没有找到, 可能还在开发中...</div>
+                </div>
+            </DocumentTitle>
         );
     }
 }

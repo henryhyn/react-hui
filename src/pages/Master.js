@@ -16,12 +16,10 @@ class Master extends Component {
 
     render() {
         return (
-            <div>
+            <div className='page-wrapper'>
                 <Navbar title='HUI Web 组件库' data={menus}/>
 
-                <div className='page-wrapper'>
-                    <div className='wrapper'>{this.props.children}</div>
-                </div>
+                {this.props.children}
 
                 <Footer>
                     <Row>
@@ -36,6 +34,7 @@ class Master extends Component {
                             <ul>
                                 <li><a href="http://facebook.github.io/react/">React</a></li>
                                 <li><a href="http://ant.design/">ANT DESIGN</a></li>
+                                <li><a href="https://motion.ant.design">Ant Motion</a></li>
                             </ul>
                         </Col>
                         <Col span={6}>
