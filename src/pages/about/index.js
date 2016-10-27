@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
+import { FancyTree } from '../../components';
 
 class About extends Component {
     constructor(props) {
@@ -10,7 +11,9 @@ class About extends Component {
     render() {
         return (
             <DocumentTitle title='关于我们'>
-                <div className='wrapper'>about</div>
+                <div className='wrapper'>
+                    <FancyTree url='/api/cities/'/>
+                </div>
             </DocumentTitle>
         );
     }

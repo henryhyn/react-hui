@@ -11,3 +11,4 @@ export { default as Star } from './star';
 export { default as SearchBox } from './search-box';
 export { default as Navbar } from './navbar';
 export { default as Footer } from './footer';
+export { default as FancyTree } from './fancy-tree';
