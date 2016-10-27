@@ -8,3 +8,4 @@ export { default as Hex } from './hex';
 export { default as Mask } from './mask';
 export { default as Star } from './star';
 export { default as SearchBox } from './search-box';
+export { default as Navbar } from './navbar';
