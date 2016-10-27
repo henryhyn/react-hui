@@ -34,19 +34,20 @@ class Master extends Component {
                         <Col span={6}>
                             <h2>相关站点</h2>
                             <ul>
-                                <li><a href='https://github.com/henryhyn/react-hui'>仓库</a></li>
+                                <li><a href="http://facebook.github.io/react/">React</a></li>
+                                <li><a href="http://ant.design/">ANT DESIGN</a></li>
                             </ul>
                         </Col>
                         <Col span={6}>
                             <h2>联系我们</h2>
                             <ul>
-                                <li><a href='https://github.com/henryhyn/react-hui'>仓库</a></li>
+                                <li><a href="mailto:yongneng.he@dianping.com">何永能</a></li>
                             </ul>
                         </Col>
                         <Col span={6}>
                             <h2>出品方</h2>
                             <ul>
-                                <li><a href='https://github.com/henryhyn/react-hui'>仓库</a></li>
+                                <li>©2016 新美大 POI 信息业务部出品</li>
                             </ul>
                         </Col>
                     </Row>
