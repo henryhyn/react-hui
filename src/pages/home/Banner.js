@@ -11,7 +11,6 @@ class Banner extends Component {
         return (
             <section id='banner'>
                 <ScrollElement scrollName='banner' className='page'>
-                    Banner
                 </ScrollElement>
             </section>
         );

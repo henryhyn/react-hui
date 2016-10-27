@@ -28,7 +28,6 @@ class Home extends Component {
         return (
             <div className='home-wrapper'>
                 <Banner/>
-                <Banner/>
                 <style dangerouslySetInnerHTML={{ __html: getStyle() }}/>
             </div>
         );
