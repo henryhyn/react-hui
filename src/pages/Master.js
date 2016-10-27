@@ -13,7 +13,9 @@ class Master extends Component {
             <div>
                 <Header/>
 
-                <div className='wrapper'>{this.props.children}</div>
+                <div className='page-wrapper'>
+                    <div className='wrapper'>{this.props.children}</div>
+                </div>
 
                 <Footer/>
             </div>

@@ -2,6 +2,7 @@ import './index.less';
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Menu, Row, Col, Icon } from 'antd';
+import { StringUtils } from '../../components';
 const MenuItem = Menu.Item;
 
 class Navbar extends Component {
@@ -13,7 +14,7 @@ class Navbar extends Component {
     render() {
         const { location } = this.context.router;
         const module = location.pathname.replace('\/', '');
-        const activeMenuItem = module || 'home';
+        const activeMenuItem = StringUtils.isValid(module) ? module : '/';
         return (
             <nav className='hui-navbar'>
                 <div className='wrapper'>
