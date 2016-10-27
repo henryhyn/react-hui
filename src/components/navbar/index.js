@@ -55,7 +55,7 @@ Navbar.defaultProps = {
 };
 
 Navbar.contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: PropTypes.object.isRequired
 };
 
 export default Navbar;

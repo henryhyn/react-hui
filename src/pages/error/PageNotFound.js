@@ -10,9 +10,7 @@ class PageNotFound extends Component {
     render() {
         return (
             <DocumentTitle title='页面没有找到'>
-                <div className='main-wrapper'>
-                    <div className='wrapper'>页面没有找到, 可能还在开发中...</div>
-                </div>
+                <div className='wrapper'>页面没有找到, 可能还在开发中...</div>
             </DocumentTitle>
         );
     }

@@ -40,12 +40,10 @@ class Contact extends Component {
     render() {
         return (
             <DocumentTitle title='联系我们'>
-                <div className='main-wrapper'>
-                    <div className='wrapper'>
-                        <Icon type='link'/>
-                        <SearchBox onSearch={this.handleSearch.bind(this)}/>
-                        {this.renderData(this.state.data)}
-                    </div>
+                <div className='wrapper'>
+                    <Icon type='link'/>
+                    <SearchBox onSearch={this.handleSearch.bind(this)}/>
+                    {this.renderData(this.state.data)}
                 </div>
             </DocumentTitle>
         );

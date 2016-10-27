@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Row, Col } from 'antd';
-import { Navbar, Footer } from '../components';
+import { Navbar, Footer, StringUtils } from '../components';
 
 const menus = [
     {name: '首页', path: '/', icon: 'appstore'},
@@ -15,11 +15,17 @@ class Master extends Component {
     }
 
     render() {
+        const { location } = this.context.router;
+        const module = location.pathname.replace('\/', '');
         return (
             <div className='page-wrapper'>
                 <Navbar title='HUI Web 组件库' data={menus}/>
 
-                {this.props.children}
+                {
+                    StringUtils.isValid(module)
+                        ? <div className='main-wrapper'>{this.props.children}</div>
+                        : this.props.children
+                }
 
                 <Footer>
                     <Row>
@@ -59,5 +65,9 @@ class Master extends Component {
 Master.propTypes = {};
 
 Master.defaultProps = {};
+
+Master.contextTypes = {
+    router: PropTypes.object.isRequired
+};
 
 export default Master;

@@ -10,9 +10,7 @@ class About extends Component {
     render() {
         return (
             <DocumentTitle title='关于我们'>
-                <div className='main-wrapper'>
-                    <div className='wrapper'>about</div>
-                </div>
+                <div className='wrapper'>about</div>
             </DocumentTitle>
         );
     }
