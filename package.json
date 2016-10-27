@@ -2,9 +2,9 @@
   "name": "react-hui",
   "version": "1.0.19",
   "description": "基于 React 的 Web 前端组件库",
-  "main": "dist/hui",
+  "main": "src/components",
   "files": [
-    "dist"
+    "src/components"
   ],
   "scripts": {
     "prestart": "npm install",
