@@ -18,8 +18,12 @@ class FancyTree extends Component {
     }
 
     loadDataFromServer() {
-        const url = this.props.url + 'tree.json';
-        fetch(url).then(res => {
+        const url = this.props.url + 'tree';
+        fetch(url, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(res => {
             if (res.ok) {
                 res.json().then(data => this.setState({treeData: [data] || []}));
             } else {
@@ -128,7 +132,9 @@ class FancyTree extends Component {
         };
         return (
             <div>
-                <Tree onRightClick={this.handleRightClick.bind(this)}>
+                <Tree
+                    onSelect={this.props.onSelect}
+                    onRightClick={this.handleRightClick.bind(this)}>
                     {treeNodes}
                 </Tree>
 
@@ -136,11 +142,15 @@ class FancyTree extends Component {
                     title='选择功能'
                     visible={this.state.actionVisible}
                     onCancel={() => this.setState({actionVisible: false})}>
-                    <Button onClick={this.handleNewClick.bind(this)}>新建子节点</Button>
-                    <Button onClick={this.handleEditClick.bind(this)}>编辑节点</Button>
-                    <Popconfirm title='确定要删除吗?' onConfirm={this.handleDeleteClick.bind(this)}>
-                        <Button>删除节点</Button>
-                    </Popconfirm>
+                    <ul className='list-inline'>
+                        <li><Button onClick={this.handleNewClick.bind(this)}>新建子节点</Button></li>
+                        <li><Button onClick={this.handleEditClick.bind(this)}>编辑节点</Button></li>
+                        <li>
+                            <Popconfirm title='确定要删除吗?' onConfirm={this.handleDeleteClick.bind(this)}>
+                                <Button>删除节点</Button>
+                            </Popconfirm>
+                        </li>
+                    </ul>
                 </Modal>
 
                 <Modal
@@ -162,10 +172,13 @@ class FancyTree extends Component {
 }
 
 FancyTree.propTypes = {
+    onSelect: PropTypes.func,
     url: PropTypes.string
 };
 
 FancyTree.defaultProps = {
+    onSelect: ()=> {
+    },
     url: ''
 };
 

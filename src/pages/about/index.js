@@ -5,14 +5,27 @@ import { FancyTree } from '../../components';
 class About extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            selected: null
+        };
+    }
+
+    handleSelect(selectedKeys, e) {
+        if (selectedKeys.length == 0) {
+            return false;
+        }
+        const selected = e.selectedNodes.map(item => item.props.title).join(',');
+        this.setState({selected});
     }
 
     render() {
         return (
             <DocumentTitle title='关于我们'>
                 <div className='wrapper'>
-                    <FancyTree url='/api/cities/'/>
+                    <p>{this.state.selected}</p>
+                    <FancyTree
+                        onSelect={this.handleSelect.bind(this)}
+                        url='/api/cities/'/>
                 </div>
             </DocumentTitle>
         );
