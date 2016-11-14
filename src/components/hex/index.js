@@ -9,7 +9,15 @@ Hex.toParams = (object) => {
 Hex.toQuery = (object) => Object.keys(object).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(object[key])}`).join('&');
 
 Hex.get = (url, params, cb) => {
-    url = url + '?' + Hex.toQuery(params);
+    if (cb === undefined) {
+        cb = params;
+        params = undefined;
+    }
+
+    if (params !== undefined) {
+        url = url + '?' + Hex.toQuery(params);
+    }
+
     fetch(url).then(res => {
         if (res.ok) {
             res.json().then(data => cb(data));
