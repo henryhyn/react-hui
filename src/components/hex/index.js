@@ -6,7 +6,10 @@ Hex.toParams = (object) => {
     return data;
 };
 
-Hex.toQuery = (object) => Object.keys(object).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(object[key])}`).join('&');
+Hex.toQuery = (object) => Object.keys(object)
+    .filter(key => object[key] !== null && object[key] !== undefined)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(object[key])}`)
+    .join('&');
 
 Hex.get = (url, params, cb) => {
     if (cb === undefined) {
@@ -14,6 +17,7 @@ Hex.get = (url, params, cb) => {
         params = undefined;
     }
 
+    url = url + '.json';
     if (params !== undefined) {
         url = url + '?' + Hex.toQuery(params);
     }
