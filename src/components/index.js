@@ -9,6 +9,8 @@ export { default as StringUtils } from './hex/StringUtils';
 export { default as Mask } from './mask';
 export { default as Star } from './star';
 export { default as SearchBox } from './search-box';
+export { default as SmartSearchBox } from './search-box/SmartSearchBox';
+export { default as SimpleSearchBox } from './search-box/SimpleSearchBox';
 export { default as Navbar } from './navbar';
 export { default as Footer } from './footer';
 export { default as FancyTree } from './fancy-tree';
