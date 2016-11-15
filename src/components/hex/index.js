@@ -29,4 +29,39 @@ Hex.get = (url, params, cb) => {
     });
 };
 
+Hex.post = (url, params, cb) => {
+    url = url + '.json';
+    fetch(url, {
+        method: 'POST',
+        body: Hex.toParams(params)
+    }).then(res => {
+        if (res.ok) {
+            res.json().then(data => cb(data));
+        }
+    });
+};
+
+Hex.put = (url, params, cb) => {
+    url = url + '.json';
+    fetch(url, {
+        method: 'PUT',
+        body: Hex.toParams(params)
+    }).then(res => {
+        if (res.ok) {
+            res.json().then(data => cb(data));
+        }
+    });
+};
+
+Hex.delete = (url, cb) => {
+    url = url + '.json';
+    fetch(url, {
+        method: 'DELETE'
+    }).then(res => {
+        if (res.ok) {
+            res.json().then(data => cb(data));
+        }
+    });
+};
+
 export default Hex;
