@@ -19,17 +19,7 @@ class FancyTree extends Component {
 
     loadDataFromServer() {
         const url = this.props.url + 'tree';
-        fetch(url, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(res => {
-            if (res.ok) {
-                res.json().then(data => this.setState({treeData: [data] || []}));
-            } else {
-                console.log('Go to %s failed, status: %d', url, res.status);
-            }
-        });
+        Hex.get(url, data => this.setState({treeData: [data]}));
     }
 
     componentDidMount() {
@@ -51,28 +41,18 @@ class FancyTree extends Component {
     }
 
     handleSubmit() {
-        let url = this.props.url + this.state.category.id;
-        let method = 'PUT';
+        const params = {
+            parentId: this.state.eventKey,
+            name: this.state.category.name || ''
+        };
+
         if (this.state.isNew) {
-            url = this.props.url;
-            method = 'POST';
+            const url = this.props.url;
+            Hex.post(url, params, data => this.setState({treeData: [data], visible: false}));
+        } else {
+            const url = this.props.url + this.state.category.id;
+            Hex.put(url, params, data => this.setState({treeData: [data], visible: false}));
         }
-        fetch(url, {
-            method: method,
-            body: Hex.toParams({
-                parentId: this.state.eventKey,
-                name: this.state.category.name || ''
-            })
-        }).then(res => {
-            if (res.ok) {
-                res.json().then(data => this.setState({
-                    treeData: [data] || [],
-                    visible: false
-                }));
-            } else {
-                console.log('Go to %s failed, status: %d', url, res.status);
-            }
-        });
     }
 
 
@@ -87,34 +67,17 @@ class FancyTree extends Component {
 
     handleEditClick() {
         const url = this.props.url + this.state.eventKey;
-        fetch(url).then(res => {
-            if (res.ok) {
-                res.json().then(data => this.setState({
-                    isNew: false,
-                    category: data,
-                    actionVisible: false,
-                    visible: true
-                }));
-            } else {
-                console.log('Go to %s failed, status: %d', url, res.status);
-            }
-        });
+        Hex.get(url, data => this.setState({
+            isNew: false,
+            category: data,
+            actionVisible: false,
+            visible: true
+        }));
     }
 
     handleDeleteClick() {
         const url = this.props.url + this.state.eventKey;
-        fetch(url, {
-            method: 'DELETE'
-        }).then(res => {
-            if (res.ok) {
-                res.json().then(data => this.setState({
-                    treeData: [data] || [],
-                    actionVisible: false
-                }));
-            } else {
-                console.log('Go to %s failed, status: %d', url, res.status);
-            }
-        });
+        Hex.delete(url, data => this.setState({treeData: [data], actionVisible: false}));
     }
 
     render() {
@@ -125,7 +88,7 @@ class FancyTree extends Component {
                 return <TreeNode title={item.label} key={item.id} isLeaf={item.children === null}/>;
             }
         });
-        const treeNodes = loop(this.state.treeData);
+        const treeNodes = loop(this.state.treeData || []);
         const formItemLayout = {
             labelCol: {span: 3},
             wrapperCol: {span: 21}
