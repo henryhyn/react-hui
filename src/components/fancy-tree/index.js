@@ -34,16 +34,10 @@ class FancyTree extends Component {
         });
     }
 
-    handleChange(e) {
-        const fields = e.target.name.split('/');
-        this.state[fields[0]][fields[1]] = e.target.value;
-        this.setState({});
-    }
-
     handleSubmit() {
         const params = {
             parentId: this.state.category.parentId,
-            name: this.state.category.name
+            name: this.state.category.name || ''
         };
 
         if (this.state.isNew) {
@@ -125,7 +119,7 @@ class FancyTree extends Component {
                         <FormItem {...formItemLayout} label='名称'>
                             <Input name='category/name'
                                    value={this.state.category.name}
-                                   onChange={this.handleChange.bind(this)}/>
+                                   onChange={e => Hex.handleChangeByName(this, e)}/>
                         </FormItem>
                     </Form>
                 </Modal>

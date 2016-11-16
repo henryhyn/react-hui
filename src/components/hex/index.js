@@ -73,4 +73,10 @@ Hex.delete = (url, cb) => {
     });
 };
 
+Hex.handleChangeByName = (me, e) => {
+    const fields = e.target.name.split('/');
+    me.state[fields[0]][fields[1]] = e.target.value;
+    me.setState({});
+};
+
 export default Hex;
