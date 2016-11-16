@@ -17,12 +17,15 @@ Hex.get = (url, params, cb) => {
         params = undefined;
     }
 
-    url = url + '.json';
     if (params !== undefined) {
         url = url + '?' + Hex.toQuery(params);
     }
 
-    fetch(url).then(res => {
+    fetch(url, {
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(res => {
         if (res.ok) {
             res.json().then(data => cb(data));
         }
@@ -30,10 +33,12 @@ Hex.get = (url, params, cb) => {
 };
 
 Hex.post = (url, params, cb) => {
-    url = url + '.json';
     fetch(url, {
         method: 'POST',
-        body: Hex.toParams(params)
+        body: Hex.toParams(params),
+        headers: {
+            'Accept': 'application/json'
+        }
     }).then(res => {
         if (res.ok) {
             res.json().then(data => cb(data));
@@ -42,10 +47,12 @@ Hex.post = (url, params, cb) => {
 };
 
 Hex.put = (url, params, cb) => {
-    url = url + '.json';
     fetch(url, {
         method: 'PUT',
-        body: Hex.toParams(params)
+        body: Hex.toParams(params),
+        headers: {
+            'Accept': 'application/json'
+        }
     }).then(res => {
         if (res.ok) {
             res.json().then(data => cb(data));
@@ -54,9 +61,11 @@ Hex.put = (url, params, cb) => {
 };
 
 Hex.delete = (url, cb) => {
-    url = url + '.json';
     fetch(url, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json'
+        }
     }).then(res => {
         if (res.ok) {
             res.json().then(data => cb(data));
