@@ -42,8 +42,8 @@ class FancyTree extends Component {
 
     handleSubmit() {
         const params = {
-            parentId: this.state.eventKey,
-            name: this.state.category.name || ''
+            parentId: this.state.category.parentId,
+            name: this.state.category.name
         };
 
         if (this.state.isNew) {
@@ -59,7 +59,7 @@ class FancyTree extends Component {
     handleNewClick() {
         this.setState({
             isNew: true,
-            category: {},
+            category: {parentId: this.state.eventKey},
             actionVisible: false,
             visible: true
         });
@@ -81,7 +81,7 @@ class FancyTree extends Component {
     }
 
     render() {
-        const loop = data => data.map((item) => {
+        const loop = data => data.map(item => {
             if (item.children) {
                 return <TreeNode title={item.label} key={item.id}>{loop(item.children)}</TreeNode>;
             } else {
@@ -122,7 +122,7 @@ class FancyTree extends Component {
                     onOk={this.handleSubmit.bind(this)}
                     onCancel={() => this.setState({visible: false})}>
                     <Form horizontal>
-                        <FormItem {...formItemLayout} label='名称:'>
+                        <FormItem {...formItemLayout} label='名称'>
                             <Input name='category/name'
                                    value={this.state.category.name}
                                    onChange={this.handleChange.bind(this)}/>
