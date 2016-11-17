@@ -54,6 +54,7 @@
   "dependencies": {
     "antd": "^2.1.0",
     "classnames": "^2.2.5",
+    "jquery": "^3.1.1",
     "rc-scroll-anim": "^0.4.1",
     "react": "^15.3.2",
     "react-document-title": "^2.0.2",

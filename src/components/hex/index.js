@@ -1,3 +1,4 @@
+import $ from 'jquery';
 const Hex = {};
 
 Hex.toParams = (object) => {
@@ -48,6 +49,16 @@ Hex.post = (url, params, cb) => {
     });
 };
 
+Hex.post = (url, params, cb) => {
+    $.ajax({
+        url: url,
+        type: 'POST',
+        dataType: 'JSON',
+        data: params,
+        success: cb
+    });
+};
+
 Hex.put = (url, params, cb) => {
     fetch(url, {
         method: 'PUT',
@@ -59,6 +70,16 @@ Hex.put = (url, params, cb) => {
         if (res.ok) {
             res.json().then(data => cb(data));
         }
+    });
+};
+
+Hex.put = (url, params, cb) => {
+    $.ajax({
+        url: url,
+        type: 'PUT',
+        dataType: 'JSON',
+        data: params,
+        success: cb
     });
 };
 
