@@ -5,7 +5,6 @@ import './index.less';
 
 // 加载 React 组件
 export { default as Hex } from './hex';
-export { default as StringUtils } from './hex/StringUtils';
 export { default as Mask } from './mask';
 export { default as Star } from './star';
 export { default as SearchBox } from './search-box';

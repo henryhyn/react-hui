@@ -2,12 +2,14 @@ const Hex = {};
 
 Hex.toParams = (object) => {
     const data = new URLSearchParams();
-    Object.keys(object).map(key => data.set(key, object[key]));
+    Object.keys(object)
+        .filter(key => Hex.validAny(object[key]))
+        .map(key => data.set(key, object[key]));
     return data;
 };
 
 Hex.toQuery = (object) => Object.keys(object)
-    .filter(key => object[key] !== null && object[key] !== undefined)
+    .filter(key => Hex.validAny(object[key]))
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(object[key])}`)
     .join('&');
 
@@ -78,5 +80,9 @@ Hex.handleChangeByName = (me, e) => {
     me.state[fields[0]][fields[1]] = e.target.value;
     me.setState({});
 };
+
+Hex.validAny = any => any !== null && any !== undefined;
+Hex.validString = str => Hex.validAny(str) && str && str.toLowerCase() != 'null' && str.toLowerCase() != 'undefined' && str.trim().length > 0;
+Hex.validNumber = num => Hex.validAny(num);
 
 export default Hex;

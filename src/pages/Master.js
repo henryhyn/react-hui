@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Row, Col } from 'antd';
-import { Navbar, Footer, StringUtils } from '../components';
+import { Navbar, Footer, Hex } from '../components';
 
 const menus = [
     {name: '首页', path: '/', icon: 'appstore'},
@@ -22,7 +22,7 @@ class Master extends Component {
                 <Navbar title='HUI Web 组件库' data={menus}/>
 
                 {
-                    StringUtils.isValid(module)
+                    Hex.validString(module)
                         ? <div className='main-wrapper'>{this.props.children}</div>
                         : this.props.children
                 }
