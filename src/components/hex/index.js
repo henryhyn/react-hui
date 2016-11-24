@@ -1,4 +1,9 @@
-import $ from 'jquery';
+import React from 'react';
+import { Tag } from 'antd';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+moment.locale('zh-cn');
+
 const Hex = {};
 
 Hex.toParams = (object) => {
@@ -38,48 +43,30 @@ Hex.get = (url, params, cb) => {
 Hex.post = (url, params, cb) => {
     fetch(url, {
         method: 'POST',
-        body: Hex.toParams(params),
+        body: JSON.stringify(params),
         headers: {
+            'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
     }).then(res => {
         if (res.ok) {
             res.json().then(data => cb(data));
         }
-    });
-};
-
-Hex.post = (url, params, cb) => {
-    $.ajax({
-        url: url,
-        type: 'POST',
-        dataType: 'JSON',
-        data: params,
-        success: cb
     });
 };
 
 Hex.put = (url, params, cb) => {
     fetch(url, {
         method: 'PUT',
-        body: Hex.toParams(params),
+        body: JSON.stringify(params),
         headers: {
+            'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
     }).then(res => {
         if (res.ok) {
             res.json().then(data => cb(data));
         }
-    });
-};
-
-Hex.put = (url, params, cb) => {
-    $.ajax({
-        url: url,
-        type: 'PUT',
-        dataType: 'JSON',
-        data: params,
-        success: cb
     });
 };
 
@@ -106,4 +93,33 @@ Hex.validAny = any => any !== null && any !== undefined;
 Hex.validString = str => Hex.validAny(str) && str && str.toLowerCase() != 'null' && str.toLowerCase() != 'undefined' && str.trim().length > 0;
 Hex.validNumber = num => Hex.validAny(num);
 
+Hex.toDate = m => Hex.validAny(m) ? m.toDate() : moment().toDate();
+Hex.formatDate = date => Hex.validAny(date) ? moment(date, moment.x).format('YYYY-MM-DD HH:mm') : '';
+Hex.toMoment = date => Hex.validAny(date) ? moment(date, moment.x) : null;
+Hex.fromNow = date => Hex.validAny(date) ? moment(date, moment.x).fromNow() : null;
+
+Hex.renderStatus = status => {
+    let color = '#87d068';
+    if (status > 0) {
+        color = '#2db7f5';
+    }
+    if (status < 0) {
+        color = '#f50';
+    }
+
+    switch (status) {
+        case -2:
+            return <Tag color={color}>失败</Tag>;
+        case -1:
+            return <Tag color={color}>下线</Tag>;
+        case 0:
+            return <Tag color={color}>初始</Tag>;
+        case 1:
+            return <Tag color={color}>在线</Tag>;
+        case 2:
+            return <Tag color={color}>成功</Tag>;
+        default:
+            return <Tag color={color}>未知</Tag>;
+    }
+};
 export default Hex;
