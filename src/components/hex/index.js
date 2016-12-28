@@ -85,7 +85,11 @@ Hex.delete = (url, cb) => {
 
 Hex.handleChangeByName = (me, e) => {
     const fields = e.target.name.split('/');
-    me.state[fields[0]][fields[1]] = e.target.value;
+    if (fields.length > 1) {
+        me.state[fields[0]][fields[1]] = e.target.value;
+    } else {
+        me.state[fields[0]] = e.target.value;
+    }
     me.setState({});
 };
 
