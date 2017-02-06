@@ -13,3 +13,4 @@ export { default as SimpleSearchBox } from './search-box/SimpleSearchBox';
 export { default as Navbar } from './navbar';
 export { default as Footer } from './footer';
 export { default as FancyTree } from './fancy-tree';
+export { default as MarkEditor } from './editor/MarkEditor';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
-import { SearchBox, Hex } from '../../components';
+import { SearchBox, Hex, MarkEditor } from '../../components';
 import { Icon } from 'antd';
 
 class Contact extends Component {
@@ -37,6 +37,10 @@ class Contact extends Component {
         );
     }
 
+    onChange(newValue) {
+        console.log('change', newValue);
+    }
+
     render() {
         return (
             <DocumentTitle title='联系我们'>
@@ -44,6 +48,7 @@ class Contact extends Component {
                     <Icon type='link'/>
                     <SearchBox onSearch={this.handleSearch.bind(this)}/>
                     {this.renderData(this.state.data)}
+                    <MarkEditor onChange={this.onChange.bind(this)}/>
                 </div>
             </DocumentTitle>
         );
