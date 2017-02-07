@@ -1,0 +1,54 @@
+.wmd-preview {
+  overflow-y: scroll;
+
+  ul, ol {
+    padding-left: 2em;
+  }
+  p {
+    text-indent: 2em;
+  }
+  p, li {
+    text-align: justify;
+  }
+  img {
+    max-width: 81%;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  pre {
+    border-radius: 0;
+  }
+  table {
+    max-width: 80%;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  ul {
+    list-style: disc;
+    ul {
+      list-style: square;
+      ul {
+        list-style: circle;
+      }
+    }
+  }
+
+  ol {
+    list-style: decimal;
+    ol {
+      list-style: upper-alpha;
+      ol {
+        list-style: lower-alpha;
+        ol {
+          list-style: upper-roman;
+          ol {
+            list-style: lower-roman;
+          }
+        }
+      }
+    }
+  }
+}
