@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DocumentTitle from 'react-document-title';
-import { SearchBox, Hex, MarkEditor } from '../../components';
+import { SearchBox, Hex, MarkEditor, Star } from '../../components';
 import { Icon } from 'antd';
 
 class Contact extends Component {
@@ -45,6 +45,7 @@ class Contact extends Component {
         return (
             <DocumentTitle title='联系我们'>
                 <div className='wrapper'>
+                    <Star rank={45}/>
                     <Icon type='link'/>
                     <SearchBox onSearch={this.handleSearch.bind(this)}/>
                     {this.renderData(this.state.data)}
