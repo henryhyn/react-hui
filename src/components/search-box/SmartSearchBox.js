@@ -1,5 +1,6 @@
 import './searchbox.less';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Select, Input, Button } from 'antd';
 import classNames from 'classnames';
 const InputGroup = Input.Group;

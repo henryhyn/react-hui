@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Tree, Modal, Form, Input, Button, Popconfirm } from 'antd';
 const TreeNode = Tree.TreeNode;
 const FormItem = Form.Item;

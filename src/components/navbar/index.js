@@ -1,5 +1,6 @@
 import './index.less';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Menu, Row, Col, Icon } from 'antd';
 import { Hex } from '../../components';
@@ -12,7 +13,7 @@ class Navbar extends Component {
     }
 
     render() {
-        const { location } = this.context.router;
+        const { location } = this.context.router.route;
         const module = location.pathname.replace('\/', '');
         const activeMenuItem = Hex.validString(module) ? module : '/';
         return (
