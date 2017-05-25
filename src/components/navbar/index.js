@@ -1,7 +1,7 @@
 import './index.less';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Menu, Row, Col, Icon } from 'antd';
 import { Hex } from '../../components';
 const MenuItem = Menu.Item;

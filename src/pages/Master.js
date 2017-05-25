@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
 import { Navbar, Footer, Hex } from '../components';
 
@@ -15,7 +16,7 @@ class Master extends Component {
     }
 
     render() {
-        const { location } = this.context.router;
+        const { location } = this.context.router.route;
         const module = location.pathname.replace('\/', '');
         return (
             <div className='page-wrapper'>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ScrollElement from 'rc-scroll-anim/lib/ScrollElement';
 
 class Banner extends Component {
     constructor(props) {
@@ -10,8 +9,6 @@ class Banner extends Component {
     render() {
         return (
             <section id='banner'>
-                <ScrollElement scrollName='banner' className='page'>
-                </ScrollElement>
             </section>
         );
     }
