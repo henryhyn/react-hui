@@ -1,13 +1,13 @@
-var path = require('path');
-var autoprefixer = require('autoprefixer');
-var HtmlwebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
 // 定义了一些文件夹的路径
-var ROOT_PATH = path.resolve(__dirname);
-var SRC_PATH = path.resolve(ROOT_PATH, 'src');
-var DIST_PATH = path.resolve(ROOT_PATH, 'dist');
+const ROOT_PATH = path.resolve(__dirname);
+const SRC_PATH = path.resolve(ROOT_PATH, 'src');
+const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 
-module.exports = {
+const config = {
     // 项目入口. 可以直接用文件夹名称, 默认会找 index.js; 也可以确定是哪个文件名字
     entry: {
         app: SRC_PATH
@@ -20,35 +20,48 @@ module.exports = {
     },
     // 模块. 要用什么不同的模块来处理各种类型的文件
     module: {
-        preLoaders: [{
+        rules: [{
+            enforce: 'pre',
             test: /\.js$/,
-            include: SRC_PATH,
-            loader: 'eslint-loader'
-        }],
-        loaders: [{
+            exclude: /node_modules/,
+            use: 'eslint-loader'
+        }, {
             test: /\.js$/,
-            include: SRC_PATH,
-            loader: 'babel',
-            query: {
-                plugins: [['import', {libraryName: 'antd', style: 'css'}]],
-                presets: ['es2015', 'react']
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    plugins: [['import', {libraryName: 'antd', style: 'css'}]],
+                    presets: ['es2015', 'react']
+                }
             }
         }, {
-            test: /\.css$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader')
+            test: /\.css/,
+            use: ExtractTextPlugin.extract({
+                use: [{
+                    loader: 'css-loader'
+                }]
+            })
         }, {
             test: /\.less$/,
-            include: SRC_PATH,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader!less-loader?sourceMap')
+            exclude: /node_modules/,
+            use: ExtractTextPlugin.extract({
+                use: [{
+                    loader: 'css-loader'
+                }, {
+                    loader: 'less-loader',
+                    options: {
+                        strictMath: true,
+                        noIeCompat: true
+                    }
+                }]
+            })
         }, {
             test: /\.(png|jpg)$/,
-            loader: 'url?limit=40000'
+            exclude: /node_modules/,
+            use: 'url-loader'
         }]
     },
-    eslint: {
-        configFile: './.eslintrc.json'
-    },
-    postcss: [autoprefixer],
     // 启用 source-map
     devtool: 'source-map',
     // 配置 webpack-dev-server 代理
@@ -56,7 +69,7 @@ module.exports = {
         historyApiFallback: true,
         hot: true,
         inline: true,
-        progress: true,
+        compress: true,
         proxy: {
             '/api/*': {
                 target: 'http://localhost:8081',
@@ -67,10 +80,12 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('[name].css'),
         // 添加我们的插件会自动生成一个 html 文件
-        new HtmlwebpackPlugin({
+        new HtmlWebpackPlugin({
             template: 'index.html',
             chunks: ['app'],
             title: 'Hello World app'
         })
     ]
 };
+
+module.exports = config;
