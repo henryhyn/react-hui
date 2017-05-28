@@ -35,7 +35,7 @@ Hex.get = (url, params, cb) => {
         }
     }).then(res => {
         if (res.ok) {
-            res.json().then(data => cb(data));
+            res.json().then(cb);
         }
     });
 };
@@ -50,7 +50,7 @@ Hex.post = (url, params, cb) => {
         }
     }).then(res => {
         if (res.ok) {
-            res.json().then(data => cb(data));
+            res.json().then(cb);
         }
     });
 };
@@ -65,7 +65,7 @@ Hex.put = (url, params, cb) => {
         }
     }).then(res => {
         if (res.ok) {
-            res.json().then(data => cb(data));
+            res.json().then(cb);
         }
     });
 };
@@ -78,7 +78,7 @@ Hex.delete = (url, cb) => {
         }
     }).then(res => {
         if (res.ok) {
-            res.json().then(data => cb(data));
+            res.json().then(cb);
         }
     });
 };
